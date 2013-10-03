@@ -4,3 +4,4 @@
 node_modules*
 .idea/*
 aws_auth.json
+yahoo_appid.json
