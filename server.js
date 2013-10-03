@@ -1,5 +1,8 @@
 // INIT APP, SETTINGS
-var express = require("express");
+var express = require('express')
+	, http = require('http')
+	, reload = require('reload')
+
 var app = express();
 var port = 3700;
 
@@ -16,11 +19,12 @@ app.get("/", function(req, res){
 // STATIC FILE LOCATION
 app.use(express.static(__dirname + '/public'));
 
-
+// SERVER & RELOAD SETUP
+var server = http.createServer(app)
+reload(server, app)
 
 // LAUNCH SERVER LISTENING
 var io = require('socket.io').listen(app.listen(port));
-
 
 
 // REACT TO CLIENT ACTIVITY
